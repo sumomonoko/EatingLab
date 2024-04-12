@@ -1,0 +1,44 @@
+<% if current_user == user %>
+  <h4>マイページ</h4>
+<% else %>
+  <h4><%= user.name %>さんのマイページ</h4>
+<% end %>
+
+<%= image_tag user.get_image(150,150), class: 'rounded-circle' %>
+
+<div class="row">
+  <table class="table table-borderless">
+    <tr>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <td><%= user.introduction %></td>
+    </tr>
+  </table>
+</div>
+
+<div class = "row" >
+  <% if current_user == user %>
+    <%= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+    <i class="fa-solid fa-user-gear"></i>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="row">
+  <table class="table table-hover table-bordered">
+    <tr>
+        <td>投稿一覧</td>
+      </tr>
+      <tr>
+        <td>フォロワー一覧</td>
+      </tr>
+      <tr>
+        <td>DM</td>
+      </tr>
+  </table>
+</div>
+
+<div class = "row" >
+  <%= link_to "投稿する", new_food_path, class: 'btn btn-outline-secondary btn-block' %>
+</div>

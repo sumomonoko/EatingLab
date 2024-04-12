@@ -1,2 +1,31 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/users/self_introduction', user: @user %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>投稿一覧</h2>
+      <table class="table">
+        <% @foods.each do |food| %>
+          <%= link_to food_path(food) do %>
+            <tr>
+              <td><%= image_tag food.get_food_image(200,200) %></td>
+            </tr>
+            <tr>
+              <td><%= food.title %></td>
+            </tr>
+            <tr>
+              <td><%= food.genre.name %></td>
+            </tr>
+            <tr>
+              <td><%= food.menu %></td>
+            </tr>
+            <tr>
+              <td><%= food.point %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
