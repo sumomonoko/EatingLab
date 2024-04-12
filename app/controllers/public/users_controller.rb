@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to users_mypage_path
+      redirect_to user_path(@user)
     else
       render :edit
     end
@@ -24,6 +24,13 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :image)
+  end
+
+  def is_matching_login_user
+    user = User.find(current_user.id)
+    unless user.id == current_user.id
+      redirect_to new_user_session_path
+    end
   end
 
 end

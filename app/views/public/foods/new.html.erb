@@ -42,9 +42,10 @@ select {
           </tr>
         </table>
         <div class="row">
-          <%= f.submit '投稿する', class: 'btn btn-success mx-auto rounded px-4 my-4' %></td>
+          <%= f.submit '投稿する', class: 'btn btn-success mx-auto rounded px-4 my-4' %>
         </div>
       <% end %>
     </div>
   </div>
+  <%= link_to "戻る", foods_path, class: 'btn btn-secondary mt-5' %>
 </div>

@@ -13,6 +13,7 @@ class Public::FoodsController < ApplicationController
 
   def show
     @food = Food.find(params[:id])
+    @user = current_user
   end
 
   def edit
