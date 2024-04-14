@@ -1,45 +1,31 @@
 Rails.application.routes.draw do
 
+  scope module: :public do
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+    get 'ideal' => 'homes#ideal'
+    resources :users, only: [:show, :edit, :foodindex, :update, :destroy]
+    resources :foods, only: [:new, :index, :show, :edit, :create, :update, :destroy]
+    resources :dms, only: [:index, :show, :create, :destroy]
+    resources :relationships, only: [:followed, :follower]
+    resources :comments, only: [:create, :update, :destroy]
+    resources :favorites, only: [:create, :destroy]
+    resources :relationships, only: [:followed, :follower, :create, :destroy]
+    get "dms/room/information" => "dms#show"
+  end
+
   namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
+    root to: 'homes#top'
+    resources :foods, only: [:index, :show, :destroy]
+    resources :genres, only: [:index, :create, :destroy]
+    resources :users, only: [:index, :show, :edit, :update, :foodindex]
+    get "admin/users/information/foods" => "admin#users#foodindex"
   end
-  namespace :admin do
-    get 'genres/index'
-  end
-  namespace :admin do
-    get 'foods/index'
-    get 'foods/show'
-  end
-  namespace :public do
-    get 'relationships/followed'
-    get 'relationships/follower'
-  end
-  namespace :public do
-    get 'dms/index'
-    get 'dms/show'
-  end
-  namespace :public do
-    get 'foods/new'
-    get 'foods/index'
-    get 'foods/show'
-    get 'foods/edit'
-  end
-  namespace :public do
-    get 'users/mypage'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/foodindex'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-    get 'homes/ideal'
-  end
-  # 顧客用
+
+
+  # 会員用
   # URL /customers/sign_in ...
-  devise_for :users, skip: [:passwords], controllers: {
+  devise_for :user, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
@@ -49,6 +35,10 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:passwords], controllers: {
     sessions: "admin/sessions"
   }
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

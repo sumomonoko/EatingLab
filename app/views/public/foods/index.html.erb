@@ -1,2 +1,32 @@
-<h1>Public::Foods#index</h1>
-<p>Find me in app/views/public/foods/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 pt-5">
+      <%= render 'public/foods/genre', genres: @genres %>
+    </div>
+
+    <div class="col-md-8 offset-md-1 pt-5">
+      <% @foods.each do |food| %>
+      <tr>
+        <th></th>
+        <td><%= image_tag food.get_food_image(200,200) %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= food.title %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= food.genre.name %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= food.menu %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= food.point %></td>
+      </tr>
+      <% end %>
+    </div>
+  </div>
+</div>
