@@ -1,6 +1,6 @@
 class Public::FoodsController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_matching_login_user, only: [:update, :destroy, :create]
+  before_action :is_matching_login_user, only: [:update, :destroy, :edit]
   def new
     @food = Food.new
   end
@@ -13,7 +13,8 @@ class Public::FoodsController < ApplicationController
 
   def show
     @food = Food.find(params[:id])
-    @user = current_user
+    @user = @food.user
+    @users = User.find(params[:id])
   end
 
   def edit
@@ -24,6 +25,7 @@ class Public::FoodsController < ApplicationController
     @food =Food.new(food_params)
     @food.user_id = current_user.id
     if @food.save
+      flash[:notice] = "投稿に成功しました。"
       redirect_to food_path(@food.id)
     else
       render :new
@@ -33,6 +35,7 @@ class Public::FoodsController < ApplicationController
   def update
     food = Food.find(params[:id])
     if food.update(food_params)
+      flash[:notice] = "投稿の変更に成功しました。"
       redirect_to food_path(food.id)
     else
       render 'edit'
@@ -42,6 +45,13 @@ class Public::FoodsController < ApplicationController
   private
 
   def food_params
-    params.require(:food).permit(:genre_id, :title, :menu, :point, :food_image)
+    params.require(:food).permit(:genre_id, :title, :menu, :point, :image)
+  end
+
+  def is_matching_login_user
+    food = Food.find(params[:id])
+    unless food.user_id == current_user.id
+      redirect_to foods_path
+    end
   end
 end

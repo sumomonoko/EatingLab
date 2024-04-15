@@ -3,16 +3,16 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @foods = @user.foods
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = current_user
+    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
