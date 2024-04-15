@@ -42,6 +42,13 @@ class Public::FoodsController < ApplicationController
     end
   end
 
+  def destroy
+    food = Food.find(params[:id])
+    user = food.user
+    food.destroy
+    redirect_to user_path(user)
+  end
+
   private
 
   def food_params
