@@ -1,31 +1,45 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 pt-5">
-      <%= render 'public/foods/genre', genres: @genres %>
+    <div class="col-md-3">
+      <%= render 'public/foods/genre', genres: @genres, user: @user %>
     </div>
-
-    <div class="col-md-8 offset-md-1 pt-5">
+    <div class="col-md-8 offset-md-1">
       <% @foods.each do |food| %>
-      <tr>
-        <th></th>
-        <td><%= image_tag food.get_food_image(200,200) %></td>
-      </tr>
-      <tr>
-        <th></th>
-        <td><%= food.title %></td>
-      </tr>
-      <tr>
-        <th></th>
-        <td><%= food.genre.name %></td>
-      </tr>
-      <tr>
-        <th></th>
-        <td><%= food.menu %></td>
-      </tr>
-      <tr>
-        <th></th>
-        <td><%= food.point %></td>
-      </tr>
+        <table class="table table-borderless border">
+          <tr>
+            <td>
+              <%= link_to user_path(food.user) do %>
+                <%= image_tag current_user.get_image(100, 70), class: 'rounded-circle' %>
+                <%= food.user.name %>
+              <% end %>
+            </td>
+          </tr>
+          <%= link_to food_path(food) do %>
+            <tr class="col-md-12">
+              <td><%= image_tag food.get_food_image(150,150) %></td>
+            </tr>
+            <tr class="col-md-12">
+              <th class="col-md-3">テーマ</th>
+              <td><%= food.title %></td>
+            </tr>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= food.genre.name %></td>
+            </tr>
+            <tr>
+              <th>献立</th>
+              <td><%= food.menu %></td>
+            </tr>
+            <tr>
+              <th>アピールポイント</th>
+              <td><%= food.point %></td>
+            </tr>
+            <tr>
+              <th>投稿日</th>
+              <td><%= food.created_at.strftime('%Y年%m月%d日') %></td>
+            </tr>
+          <% end %>
+        </table>
       <% end %>
     </div>
   </div>
