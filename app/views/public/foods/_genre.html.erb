@@ -2,7 +2,7 @@
   <tr>
     <td>
       <%= link_to user_path(user) do %>
-        <%= image_tag current_user.get_image(100, 70), class: 'rounded-circle' %>
+        <%= image_tag current_user.get_image(90, 90), class: 'rounded-circle' %>
         <%= current_user.name %>
       <% end %>
     </td>
@@ -22,3 +22,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div class = "row" >
+  <%= link_to "投稿する", new_food_path, class: 'btn btn-outline-secondary btn-block' %>
+</div>
