@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image
-  has_many :foods
+  has_many :foods, dependent: :destroy
 
   def get_image(width, height)
     unless image.attached?
