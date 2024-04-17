@@ -1,24 +1,45 @@
-# README
+# 食ラボ
+​
+## サイト概要
+### サイトテーマ
+食事について研究できるSNSサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### テーマを選んだ理由
+普段からレシピについて調べることが多いのですが、食事全体(一食分)を見る機会があまりないように感じました。
+ですので、食事全体が見れるサイトがあると料理同士の組み合わせや栄養のバランスを把握でき、料理の幅が広がると考えました。
+他にも弁当やダイエット食、節約食なども知れたらより良いサイトになるのではないかと思い、このテーマにしました。
+​
+### ターゲットユーザ
+・食事を研究したい方
 
-Things you may want to cover:
+・自分の食事や弁当を知ってもらいたい方
 
-* Ruby version
+・食事や弁当のアドバイスをして欲しい方、したい方
 
-* System dependencies
+・献立に困っている方
 
-* Configuration
+・ダイエットや節約などの食事に興味がある方
 
-* Database creation
+・食事を大切にしたいが何をすれば良いかわからない方
 
-* Database initialization
+・弁当を作っている方
+​
+### 主な利用シーン
+・食事を見直したくて研究したい時
 
-* How to run the test suite
+・自分が取った食事をいろんな人に知ってもらいたい、アドバイスなどをもらいたい時
 
-* Services (job queues, cache servers, search engines, etc.)
+・献立に困っていたり、いろんな人がしているダイエット食や節約食を知りたい時、知ってもらいたい時
 
-* Deployment instructions
-
-* ...
+・食事について関心があり、いろんな料理を試したい時
+​
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
