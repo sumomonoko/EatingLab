@@ -10,4 +10,8 @@ class Food < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+
+  validates :title, presence: true
+  validates :menu, presence: true
+  validates :genre_id, presence: true
 end

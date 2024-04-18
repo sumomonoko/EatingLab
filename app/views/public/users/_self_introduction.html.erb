@@ -26,12 +26,14 @@
 </div>
 
 <div class="row">
-  <table class="table table-hover table-bordered">
-    <tr>
-      <td>フォロワー一覧</td>
-    </tr>
-    <tr>
-      <td>DM</td>
-    </tr>
-  </table>
+  <% if current_user.email != 'guest@example.com' %>
+    <table class="table table-hover table-bordered">
+      <tr>
+        <td>フォロワー一覧</td>
+      </tr>
+      <tr>
+        <td>DM</td>
+      </tr>
+    </table>
+  <% end %>
 </div>

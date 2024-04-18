@@ -1,6 +1,44 @@
 <style>
+  nav {
+  background-color:#FAEBD7
+  }
+  .btn-user{
+    border: none;
+    color: #FFF;
+    background: #BC8F8F;
+    margin: 20px;
+  }
+  .btn-user:hover{
+    border: none;
+    color: #BC8F8F;
+    background: #FFF;
+  }
+  .btn-user:active{
+    border: none;
+    color: #FFF;
+    background: #BC8F8F;
+  }
+  .btn-admin{
+    border: none;
+    color: #E6E6FA;
+    background: #778899;
+    margin: 20px;
+  }
+  .btn-admin:hover{
+    border: none;
+    color: #778899;
+    background: #E6E6FA;
+  }
+  .btn-admin:active{
+    border: none;
+    color: #E6E6FA;
+    background: #778899;
+  }
   .img {
     width: 90%;
+  }
+  li {
+    padding-left: 10px;
   }
 </style>
 <header>
@@ -45,16 +83,16 @@
             </li>
           <% else %>
             <li>
-              <%= link_to "ご案内", about_path, class: 'btn btn-block rounded btn-user' %>
+              <%= link_to "ご案内", about_path, class: 'btn btn-block rounded btn-user rounded-pill' %>
             </li>
             <li>
-              <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-block rounded btn-user' %>
+              <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-block rounded btn-user rounded-pill' %>
             </li>
             <li>
-              <%= link_to "ログイン", new_user_session_path, class: 'btn btn-block rounded btn-user' %>
+              <%= link_to "ログイン", new_user_session_path, class: 'btn btn-block rounded btn-user rounded-pill' %>
             </li>
             <li>
-              <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'btn btn-block rounded btn-user' %>
+              <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'btn btn-block rounded btn-user rounded-pill' %>
             </li>
           <% end %>
         </ul>
