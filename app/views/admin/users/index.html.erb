@@ -21,13 +21,14 @@
             <td><%= link_to user.name, admin_user_path(user) %></td>
             <td><%= user.email %></td>
             <td>
-              <% if customer.is_active == true %>
+              <% if user.is_active == true %>
                 <p class="text-success font-weight-bolder">有効</p>
               <% else %>
                 <p class="text-secondary font-weight-bolder">退会</p>
               <% end %>
             </td>
           </tr>
+        <% end %>
       </tbody>
     </table>
   </div>

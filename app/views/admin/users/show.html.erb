@@ -4,6 +4,7 @@
       <h4 class="float-left font-weight-bold bg-light px-3 my-3"><%= @user.name %>さんの会員詳細</h4>
     </div>
   </div>
+  <div class="row">
     <div class = "offset-2 float-center col-6">
       <table class="table table-borderless">
         <tr>
@@ -16,7 +17,7 @@
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <td><%= @user.emali %></td>
+          <td><%= @user.email %></td>
         </tr>
         <tr>
           <th>コメント</th>
@@ -33,9 +34,10 @@
           </td>
         </tr>
       </table>
+      <div class="text-center">
+        <%= link_to "編集する" , edit_admin_user_path(@user.id) , class: "btn btn-success rounded px-4 my-4" %>
+      </div>
     </div>
   </div>
-</div>
-<div class="text-center">
-  <%= link_to "編集する" , edit_admin_user_path(@user.id) , class: "btn btn-success rounded px-4 my-4" %>
+  <%= link_to "戻る", admin_users_path, class: 'btn btn-secondary mt-5' %>
 </div>
