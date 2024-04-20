@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/foods/genre', genres: @genres, user: @user %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>検索結果</h2>
+      <div class="search-foods d-flex flex-wrap">
+        <% @foods.each do |food| %>
+        <div class="search-food mr-2">
+          <%= link_to food_path(food.id) do %>
+            <%= image_tag food.image, size: "200x150" %>
+            <p><%= food.title %></p>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <%#= paginate @foods, theme: 'bootstrap-5' %>
+    </div>
+  </div>
+</div>

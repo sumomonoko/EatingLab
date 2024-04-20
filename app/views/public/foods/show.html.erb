@@ -4,7 +4,7 @@
       <%= image_tag @food.get_food_image(200,200) %>
       <p>
         <%= link_to user_path(@user) do %>
-          <%= image_tag current_user.get_image(100, 70), class: 'rounded-circle' %>
+          <%= image_tag @user.get_image(100, 70), class: 'rounded-circle' %>
           <%= @user.name %>
         <% end %>
       </p>
@@ -29,13 +29,23 @@
           <td><%= @food.point %></td>
         </tr>
         <tr>
+          <th></th>
+          <td id="favorite_btn_<%= @food.id %>">
+            <%= render "public/favorites/btn", food: @food %>
+          </td>
+        </tr>
+        <tr>
           <% if @food.user == current_user %>
             <td><%= link_to "編集する", edit_food_path(@food.id), class: 'btn btn-sm btn-success' %></td>
             <td><%= link_to "削除する", food_path(@food.id), method: :delete, "data-confirm" => "本当に消しますか?", class: 'btn btn-sm btn-danger' %></td>
           <% end %>
         </tr>
       </table>
+      <div id="comment_index_<%= @food.id %>">
+        <%= render "public/comments/index", food: @food %>
+      </div>
+      <%= render "public/comments/form", food: @food, comment: @comment %>
     </div>
   </div>
-  <%= link_to "戻る", user_path(@user), class: 'btn btn-secondary mt-5' %>
+  <%= link_to "戻る", foods_path, class: 'btn btn-secondary mt-5' %>
 </div>
