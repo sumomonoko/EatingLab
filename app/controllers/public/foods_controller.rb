@@ -15,6 +15,7 @@ class Public::FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @user = @food.user
     @users = User.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
@@ -33,20 +34,22 @@ class Public::FoodsController < ApplicationController
   end
 
   def update
-    food = Food.find(params[:id])
-    if food.update(food_params)
-      flash[:notice] = "投稿の変更に成功しました。"
-      redirect_to food_path(food.id)
+    @food = Food.find(params[:id])
+    if @food.update(food_params)
+      flash[:notice] = "投稿が更新されました。"
+      redirect_to food_path(@food.id)
     else
       render 'edit'
     end
   end
 
   def destroy
-    food = Food.find(params[:id])
-    user = food.user
-    food.destroy
-    redirect_to user_path(user)
+    @food = Food.find(params[:id])
+    @user = @food.user
+    if @food.destroy
+      flash[:notice] = "投稿が削除されました。"
+      redirect_to user_path(@user)
+    end
   end
 
   private

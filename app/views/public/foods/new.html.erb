@@ -8,10 +8,18 @@ select {
   font-size: 15px;
 }
 </style>
+
+<div class="container px-5 px-sm-0">
+  <div id="error_explanation">
+    <%= render 'layouts/error_messages', obj: @food %>
+  </div>
+</div>
+
 <div class="container">
   <div class = "row" >
     <div class = "col" >
-      <h4 class="float-left font-weight-bold bg-light px-3 my-3">投稿フォーム</h4>
+      <h4 class="float-left font-weight-bold bg-light px-3 my-3">投稿フォーム</h4><br>
+      <p>※ゲストログインの方は投稿できません。</p>
     </div>
   </div>
   <div class = "row">
@@ -42,7 +50,9 @@ select {
           </tr>
         </table>
         <div class="row">
-          <%= f.submit '投稿する', class: 'btn btn-success mx-auto rounded px-4 my-4' %>
+          <% if current_user.email != 'guest@example.com' %>
+            <%= f.submit '投稿する', class: 'btn btn-success mx-auto rounded px-4 my-4' %>
+          <% end %>
         </div>
       <% end %>
     </div>

@@ -9,6 +9,12 @@ select {
 }
 </style>
 
+<div class="container px-5 px-sm-0">
+  <div id="error_explanation">
+    <%= render 'layouts/error_messages', obj: @food %>
+  </div>
+</div>
+
 <div class="container">
   <div class = "row" >
     <div class = "col" >
