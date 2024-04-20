@@ -29,12 +29,21 @@
           <td><%= @food.point %></td>
         </tr>
         <tr>
+          <th></th>
+          <td id="favorite_btn_<%= @food.id %>">
+            <%= render "public/favorites/btn", food: @food %>&emsp;
+            コメント数： <%= @food.comments.count %>
+          </td>
+        </tr>
+        <tr>
           <% if @food.user == current_user %>
             <td><%= link_to "編集する", edit_food_path(@food.id), class: 'btn btn-sm btn-success' %></td>
             <td><%= link_to "削除する", food_path(@food.id), method: :delete, "data-confirm" => "本当に消しますか?", class: 'btn btn-sm btn-danger' %></td>
           <% end %>
         </tr>
       </table>
+      <%= render "public/comments/index", food: @food %>
+      <%= render "public/comments/form", food: @food, comment: @comment %>
     </div>
   </div>
   <%= link_to "戻る", foods_path, class: 'btn btn-secondary mt-5' %>

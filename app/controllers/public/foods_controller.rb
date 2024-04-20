@@ -15,6 +15,7 @@ class Public::FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @user = @food.user
     @users = User.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit

@@ -38,6 +38,13 @@
               <th>投稿日</th>
               <td><%= food.created_at.strftime('%Y年%m月%d日') %></td>
             </tr>
+            <tr>
+              <th></th>
+              <td id="favorite_btn_<%= food.id %>">
+                <%= render "public/favorites/btn", food: food %>&emsp;
+                コメント数： <%= food.comments.count %>
+              </td>
+            </tr>
           </table>
         <% end %>
       <% end %>

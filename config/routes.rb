@@ -4,29 +4,25 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     get 'ideal' => 'homes#ideal'
-    resources :users, only: [:show, :edit, :update, :destroy] do
+    resources :users, only: [:show, :edit, :update] do
       member do
         # 退会確認画面
         get :check
       end
-
       collection do
+        # 論理削除用のルーティング
         patch :withdraw
       end
     end
-    resources :foods, only: [:new, :index, :show, :edit, :create, :update, :destroy]
+    resources :foods, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
+      resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :dms, only: [:index, :show, :create, :destroy]
     resources :relationships, only: [:followed, :follower]
-    resources :comments, only: [:create, :update, :destroy]
-    resources :favorites, only: [:create, :destroy]
     resources :relationships, only: [:followed, :follower, :create, :destroy]
     get "dms/room/information" => "dms#show"
-
-    # 退会確認画面
-    # get  '/users/check' => 'users#check'
-    # 論理削除用のルーティング
-    # patch  '/users/withdraw' => 'users#withdraw'
-
+    get '/genre/search' => 'searches#genre_search'
   end
 
   namespace :admin do
@@ -35,6 +31,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     get "admin/users/information/foods" => "admin#users#foodindex"
+    get '/genre/search' => 'searches#genre_search'
   end
 
 
