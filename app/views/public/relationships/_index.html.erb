@@ -1,0 +1,25 @@
+<table class="table">
+  <thead class="table-borderless text-left bg-light">
+    <tr>
+      <th>ユーザー名</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody class="table-borderless text-left">
+    <% users.each do |user| %>
+      <tr>
+        <td>
+          <%= image_tag user.get_image(50,50), class: 'rounded-circle' %>
+          <%= user.name %>
+        </td>
+        <td class="align-middle">フォロー数: <%= user.followings.count %></td>
+        <td class="align-middle">フォロワー数: <%= user.followers.count %></td>
+        <td class="align-middle"><%= render "public/relationships/followbtn", user: user, options: { class: "follow-link" } %></td>
+        <td class="align-middle"><%= link_to "詳細ページ", user, class: "btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

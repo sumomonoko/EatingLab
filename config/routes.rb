@@ -13,6 +13,10 @@ Rails.application.routes.draw do
         # 論理削除用のルーティング
         patch :withdraw
       end
+      resource :relationships, only: [:create, :destroy]
+    	get "followings" => "relationships#followings", as: "followings"
+    	get "followers" => "relationships#followers", as: "followers"
+
     end
     resources :foods, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
