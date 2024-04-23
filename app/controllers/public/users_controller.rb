@@ -1,11 +1,11 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update, :withdrow]
-  before_action :authorize_user, only: [:edit, :update]
+  before_action :authorize_user, only: [:update]
 
   def show
     @user = User.find(params[:id])
-    @foods = @user.foods
+    @foods = @user.foods.page(params[:page]).per(15).order(created_at: :desc)
   end
 
   def edit

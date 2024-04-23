@@ -1,10 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <%= render 'public/users/self_introduction', user: @user %>
+      <% if current_user == @user %>
+        <h4>マイページ</h4>
+      <% else %>
+        <h4><%= @user.name %>さんのマイページ</h4>
+      <% end %>
+
+      <%= image_tag @user.get_image(150,150), class: 'rounded-circle' %>
+      <div id="user_introduction">
+        <%= render 'public/users/self_introduction', user: @user %>
+      </div>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h2>投稿一覧</h2>
+      <h3>投稿一覧</h3>
       <% @foods.each do |food| %>
         <%= link_to food_path(food) do %>
           <table class="table table-borderless border">
@@ -41,5 +50,10 @@
         <% end %>
       <% end %>
     </div>
+  </div>
+  <div class="row mt-5 text-center mx-auto">
+    <span class="mx-auto">
+      <%= paginate @foods %>
+    </span>
   </div>
 </div>

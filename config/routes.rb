@@ -13,6 +13,10 @@ Rails.application.routes.draw do
         # 論理削除用のルーティング
         patch :withdraw
       end
+      resource :relationships, only: [:create, :destroy]
+    	get "followings" => "relationships#followings", as: "followings"
+    	get "followers" => "relationships#followers", as: "followers"
+
     end
     resources :foods, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
@@ -23,6 +27,7 @@ Rails.application.routes.draw do
     resources :relationships, only: [:followed, :follower, :create, :destroy]
     get "dms/room/information" => "dms#show"
     get '/genre/search' => 'searches#genre_search'
+    get "search" => "searches#search"
   end
 
   namespace :admin do
@@ -32,6 +37,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     get "admin/users/information/foods" => "admin#users#foodindex"
     get '/genre/search' => 'searches#genre_search'
+    get "search" => "searches#search"
   end
 
 

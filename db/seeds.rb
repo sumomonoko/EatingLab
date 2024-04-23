@@ -12,3 +12,24 @@ Admin.create!(
    password: 'foodlab1321',
    password_confirmation: "foodlab1321"
 )
+
+genres = [
+  { name: '朝食' },
+  { name: '昼食' },
+  { name: '夕食' },
+  { name: '間食' },
+  { name: 'お弁当' },
+  { name: 'ダイエット食' },
+  { name: '節約食' },
+  { name: 'デザート' },
+  { name: 'おやつ' }
+]
+
+Genre.create!(genres)
+
+users = [
+  { name: '', email: '@example.com', password: 'password' },
+  { name: 'Jane', email: 'jane@example.com', password: 'secret' }
+]
+
+User.create!(users)

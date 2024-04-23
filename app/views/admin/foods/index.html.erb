@@ -7,13 +7,13 @@
       <% @foods.each do |food| %>
         <tr>
           <td>
-            <%= link_to user_path(food.user) do %>
+            <%= link_to admin_user_path(food.user) do %>
               <%= image_tag food.user.get_image(60, 60), class: 'rounded-circle' %>
               <%= food.user.name %>
             <% end %>
           </td>
         </tr>
-        <%= link_to food_path(food) do %>
+        <%= link_to admin_food_path(food) do %>
           <table class="table table-borderless border">
             <tr class="col-md-12">
               <td><%= image_tag food.get_food_image(150,150) %></td>

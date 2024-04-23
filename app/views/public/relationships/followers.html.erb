@@ -1,0 +1,19 @@
+<div class="container">
+  <div class = "row" >
+    <div class = "col" >
+      <h3 class="float-left font-weight-bold bg-light px-3 my-3">フォロワー</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-2 float-center col-10">
+      <% if @users.exists? %>
+        <td id="relationship_index_<%= @user.id %>">
+          <%= render "public/relationships/index", users: @users %>
+        </td>
+      <% else %>
+        <p>ユーザーはいません</p>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "戻る", user_path(@user), class: 'btn btn-secondary mt-5' %>
+</div>
