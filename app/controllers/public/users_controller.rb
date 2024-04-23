@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @foods = @user.foods
+    @foods = @user.foods.page(params[:page]).per(15)
   end
 
   def edit
