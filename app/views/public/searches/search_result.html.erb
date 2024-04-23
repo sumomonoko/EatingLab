@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <% if @range == "User" %>
+        <h2>ユーザー検索結果</h2>
+      <% else %>
+        <h2>テーマ検索結果(新規順)</h2>
+      <% end %>
+      <table class="table table-hover table-inverse">
+        <% if @range == "User" %>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr class="col-md-12">
+                <td class="col-md-9">
+                  <%= image_tag user.get_image(60, 60), class: 'rounded-circle' %>
+                  <%= user.name %>
+                </td>
+                <td class="col-md-3 align-middle"><%= link_to "詳細", user, class: "btn btn-primary" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% else %>
+          <tbody>
+            <tr class="col-md-12">
+              <th class="col-md-2">ユーザー</th>
+              <th class="col-md-6">テーマ</th>
+              <th class="col-md-2">ジャンル</th>
+              <th class="col-md-2"></th>
+            </tr>
+            <% @foods.order(created_at: :desc).each do |food| %>
+              <tr class="col-md-12">
+                <td class="col-md-2">
+                  <%= image_tag food.user.get_image(60, 60), class: 'rounded-circle' %>
+                  <%= food.user.name %>
+                </td>
+                <td class="col-md-6 align-middle"><%= food.title %></td>
+                <td class="col-md-2 align-middle"><%= food.genre.name %></td>
+                <td class="col-md-2 align-middle"><%= link_to "投稿詳細", food, class: "btn btn-primary" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <!--<div class="row mt-5 text-center mx-auto">-->
+  <!--  <span class="mx-auto">-->
+  <!--    <%#= paginate @foods %>-->
+  <!--  </span>-->
+  <!--</div>-->
+</div>

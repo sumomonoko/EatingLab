@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <%= render 'public/foods/genre', genres: @genres, user: @user %>
+      <%= render 'admin/genres/genres_list', genres: @genres %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h2>ジャンル別検索結果</h2>
+      <h2>検索結果</h2>
       <div class="search-foods d-flex flex-wrap">
         <% @foods.each do |food| %>
         <div class="search-food mr-2">
-          <%= link_to food_path(food.id) do %>
+          <%= link_to admin_food_path(food.id) do %>
             <%= image_tag food.image, size: "200x150" %>
             <p><%= food.title %></p>
           <% end %>

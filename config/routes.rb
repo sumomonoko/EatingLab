@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :relationships, only: [:followed, :follower, :create, :destroy]
     get "dms/room/information" => "dms#show"
     get '/genre/search' => 'searches#genre_search'
+    get "search" => "searches#search"
   end
 
   namespace :admin do
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     get "admin/users/information/foods" => "admin#users#foodindex"
     get '/genre/search' => 'searches#genre_search'
+    get "search" => "searches#search"
   end
 
 

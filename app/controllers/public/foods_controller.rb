@@ -6,7 +6,7 @@ class Public::FoodsController < ApplicationController
   end
 
   def index
-    @foods = Food.page(params[:page]).per(15)
+    @foods = Food.page(params[:page]).per(15).order(created_at: :desc)
     @user = current_user
     @genres = Genre.all
   end
