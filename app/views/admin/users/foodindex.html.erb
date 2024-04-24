@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <h4 class="float-left font-weight-bold bg-light px-3 my-3"><%= @user.name %>さんの投稿一覧</h4>
+      <% @foods.each do |food| %>
+        <%= link_to admin_food_path(food) do %>
+          <table class="table table-borderless border">
+            <tr class="col-md-12">
+              <td><%= image_tag food.get_food_image(150,150) %></td>
+            </tr>
+            <tr class="col-md-12">
+              <th class="col-md-3">テーマ</th>
+              <td><%= food.title %></td>
+            </tr>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= food.genre.name %></td>
+            </tr>
+            <tr>
+              <th>献立</th>
+              <td><%= food.menu %></td>
+            </tr>
+            <tr>
+              <th>アピールポイント</th>
+              <td><%= food.point %></td>
+            </tr>
+            <tr>
+              <th>投稿日</th>
+              <td><%= food.created_at.strftime('%Y年%m月%d日') %></td>
+            </tr>
+          </table>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-5 text-center mx-auto">
+    <span class="mx-auto">
+      <%= paginate @foods %>
+    </span>
+  </div>
+</div>
