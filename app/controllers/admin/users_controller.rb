@@ -9,6 +9,11 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def foodindex
+    @user = User.find(params[:id])
+    @foods = @user.foods.page(params[:page]).per(15).order(created_at: :desc)
+  end
+
   def edit
     @user = User.find(params[:id])
   end

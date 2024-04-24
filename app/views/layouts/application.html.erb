@@ -35,6 +35,15 @@ footer {
     <div class="content">
       <%= render 'layouts/header' %>
       <main>
+        <div class="container">
+          <div class="row w-100 justify-content-end pt-4">
+            <% if user_signed_in? %>
+              <%= render 'public/searches/serach' %>
+            <% elsif admin_signed_in? %>
+              <%= render 'admin/searches/serach' %>
+            <% end %>
+          </div>
+        </div>
         <div style="height: 100px;" >
           <p class="h5 text-center mt-3" id="notice"><%= notice %></p>
         </div>

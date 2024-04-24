@@ -16,7 +16,7 @@ class Admin::FoodsController < ApplicationController
     @user = @food.user
     if @food.destroy
       flash[:notice] = "投稿が削除されました。"
-      redirect_to user_path(@user)
+      redirect_to admin_foods_path
     end
   end
 

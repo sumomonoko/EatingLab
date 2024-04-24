@@ -34,8 +34,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :foods, only: [:index, :show, :destroy]
     resources :genres, only: [:index, :create, :destroy]
-    resources :users, only: [:index, :show, :edit, :update]
-    get "admin/users/information/foods" => "admin#users#foodindex"
+    resources :users, only: [:index, :show, :edit, :update] do
+      member do
+        get :foodindex
+      end
+    end
     get '/genre/search' => 'searches#genre_search'
     get "search" => "searches#search"
   end
