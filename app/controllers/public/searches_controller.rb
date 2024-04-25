@@ -9,9 +9,9 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "User"
-      @users = User.looks(params[:search], params[:word])
+      @users = User.looks(params[:word])
     else
-      @foods = Food.looks(params[:search], params[:word])
+      @foods = Food.looks(params[:word])
     end
     render "search_result"
   end
@@ -20,9 +20,9 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "User"
-      @users = User.looks(params[:search], params[:word])
+      @users = User.looks(params[:word])
     else
-      @foods = Food.looks(params[:search], params[:word])
+      @foods = Food.looks(params[:word])
     end
   end
 end

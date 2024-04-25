@@ -61,7 +61,7 @@ end
 User.find_or_create_by!(email: 'momo@gmail') do |user|
    user.name = "momo";
    user.password = "123221";
-   user.introduction = "健康を意識した食生活をしています。";
+   user.introduction = "健康を意識した食生活を目指しています。";
    user.is_active = true
 end
 
@@ -83,6 +83,20 @@ User.find_or_create_by!(email: 'mami@gmail') do |user|
    user.name = "真美子";
    user.password = "432765";
    user.introduction = "食友探してます！気軽に話してください！";
+   user.is_active = true
+end
+
+User.find_or_create_by!(email: 'yamato@gmail') do |user|
+   user.name = "yamato";
+   user.password = "133124";
+   user.introduction = "よろしくです。";
+   user.is_active = true
+end
+
+User.find_or_create_by!(email: 'sara@gmail') do |user|
+   user.name = "沙羅";
+   user.password = "768543";
+   user.introduction = "韓国料理が好きです。よろしくお願いします！";
    user.is_active = true
 end
 

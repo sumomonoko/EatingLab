@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update, :withdrow]
   before_action :authorize_user, only: [:update]
+  before_action :guest_user, only: [:edit, :show]
 
   def show
     @user = User.find(params[:id])
@@ -31,6 +32,7 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.image.attach(params[:user][:image]) if @user.image.blank?
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
@@ -67,7 +69,16 @@ class Public::UsersController < ApplicationController
   end
 
   def authorize_user
-    redirect_to foods_path, alert: '他のユーザーの情報を編集することはできません。' unless current_user == @user
+    user = User.find(params[:id])
+    unless current_user == user
+      redirect_to foods_path, alert: '他のユーザーの情報を編集することはできません。'
+    end
+  end
+
+  def guest_user
+    if current_user.email == 'guest@example.com'
+      redirect_to foods_path
+    end
   end
 
 end

@@ -23,14 +23,8 @@ class Food < ApplicationRecord
   validates :genre_id, presence: true
 
   # 検索方法分岐
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @food = Food.where("title LIKE?","#{word}")
-    elsif search == "forward_match"
-      @food = Food.where("title LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @food = Food.where("title LIKE?","%#{word}")
-    elsif search == "partial_match"
+  def self.looks(word)
+    if word.present?
       @food = Food.where("title LIKE?","%#{word}%")
     else
       @food = Food.all
