@@ -15,4 +15,14 @@ class Admin::SearchesController < ApplicationController
     end
     render "search_result"
   end
+
+  def search_result
+    @range = params[:range]
+
+    if @range == "User"
+      @users = User.looks(params[:search], params[:word])
+    else
+      @foods = Food.looks(params[:search], params[:word])
+    end
+  end
 end

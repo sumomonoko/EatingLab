@@ -1,7 +1,12 @@
+<style>
+  h4{
+    background: #FFDEAD;
+  }
+</style>
 <div class="container">
   <div class="row">
     <div class="col">
-        <h4 class="float-left font-weight-bold bg-light px-3 my-3"><%= @user.name %>さんの投稿一覧</h4>
+        <h4 class="float-left font-weight-bold px-3 my-3"><%= @user.name %>さんの投稿一覧</h4>
       <% @foods.each do |food| %>
         <%= link_to admin_food_path(food) do %>
           <table class="table table-borderless border">
