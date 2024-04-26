@@ -12,11 +12,15 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+// import "script.js"
+// import Swiper from 'swiper/swiper-bundle.js';
+// import 'swiper/swiper-bundle.css';
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+/* global $*/
 //スクロールした際の動きを関数でまとめる
 function PageTopAnime() {
 	var scroll = $(window).scrollTop();
