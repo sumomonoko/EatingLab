@@ -24,6 +24,7 @@ class Public::UsersController < ApplicationController
         @dm = Dm.new
       end
     end
+    #byebug
   end
 
   def edit

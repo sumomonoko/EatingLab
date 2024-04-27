@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :dms, only: [:index, :show, :create, :destroy]
+    resources :rooms, only: [:create, :destroy]
     resources :relationships, only: [:followed, :follower]
     resources :relationships, only: [:followed, :follower, :create, :destroy]
     get "dms/room/information" => "dms#show"

@@ -1,0 +1,17 @@
+<div class = "d-flex justify-content-end mt-4 me-4">
+  <div class = "me-2">
+    <% unless user.id == current_user.id %>
+      <% if is_room == true %>
+        <%= link_to "DMをする", dm_path(room.id), class: 'btn btn-success mx-auto rounded px-4 my-4' %>
+      <% else %>
+        <%= form_for room do |f| %>
+          <%= fields_for dm do |e| %>
+            <% e.number_field :user_id, value: user.id, hidden: true %>
+          <% end %>
+          <% f.submit "メッセージを送る", class: "message_link" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
