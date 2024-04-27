@@ -1,1 +1,37 @@
-<%= @room.dm_partner(current_user).name%> さんとdm中
+<style>
+  h4{
+    background: #FFDEAD;
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="float-left font-weight-bold px-3 my-3">
+        <%= @room.dm_partner(current_user).name %> さんとのメッセージ
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-borderless border">
+      <% @dms.each do |dm| %>
+        <tr class="col-md-12">
+          <% if dm.user_id == current_user.id %>
+            <td class="col-md-12 text-left">
+              <%= dm.message %>
+            </td>
+          <% else %>
+            <td class="col-md-12 text-right">
+              <%= dm.message %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="row">
+    <%= form_with(model: @dm, local: false) do |f| %>
+      <%= f.text_area :message, rows:'5', placeholder: "メッセージを入力", class: "w-70" %>
+      <%= f.submit "送信" %>
+    <% end %>
+  </div>
+</div>

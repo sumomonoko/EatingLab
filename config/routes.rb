@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :dms, only: [:index, :show, :create, :destroy]
+    resources :dms, only: [:index, :create, :destroy]
     resources :relationships, only: [:followed, :follower]
     resources :relationships, only: [:followed, :follower, :create, :destroy]
     get "dms/room/information" => "dms#show"

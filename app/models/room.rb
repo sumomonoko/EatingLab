@@ -10,7 +10,7 @@ class Room < ApplicationRecord
     if current_user.id == member_id
       User.find_by(id: leader_id)
     else
-       User.find_by(id: member_id)
+      User.find_by(id: member_id)
     end
   end
 end

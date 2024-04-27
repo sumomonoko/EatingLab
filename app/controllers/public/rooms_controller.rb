@@ -4,7 +4,7 @@ class Public::RoomsController < ApplicationController
   def create
     user = User.find(params[:user_id])
     room = Room.create(leader_id: current_user.id, member_id: user.id)
-    redirect_to user_room_path(room, user) 
+    redirect_to user_room_path(room, user)
   end
 
   def index
@@ -17,5 +17,7 @@ class Public::RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @dms = @room.dms.all
+    @dm = Dm.new
   end
 end
