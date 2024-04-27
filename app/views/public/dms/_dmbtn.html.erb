@@ -1,15 +1,10 @@
-<div class = "d-flex justify-content-end mt-4 me-4">
-  <div class = "me-2">
+<div class = "row">
+  <div class = "col-md-12 pt-4">
     <% unless user.id == current_user.id %>
-      <% if is_room == true %>
-        <%= link_to "DMをする", dm_path(room.id), class: 'btn btn-success mx-auto rounded px-4 my-4' %>
+      <% if is_room %>
+        <%= link_to "DMをする", user_room_path(user.id, room_id), class: 'btn btn-outline-warning btn-block' %>
       <% else %>
-        <%= form_for room do |f| %>
-          <%= fields_for dm do |e| %>
-            <% e.number_field :user_id, value: user.id, hidden: true %>
-          <% end %>
-          <% f.submit "メッセージを送る", class: "message_link" %>
-        <% end %>
+        <%= link_to "DMを開始する",  user_rooms_path(user.id), method: :post, class: 'btn btn-outline-warning btn-block' %>
       <% end %>
     <% end %>
   </div>

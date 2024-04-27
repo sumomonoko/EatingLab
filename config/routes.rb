@@ -9,6 +9,8 @@ Rails.application.routes.draw do
         # 退会確認画面
         get :check
       end
+      # DM機能
+      resources :rooms, only: [:create, :destroy, :show]
       collection do
         # 論理削除用のルーティング
         patch :withdraw
@@ -23,7 +25,6 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :dms, only: [:index, :show, :create, :destroy]
-    resources :rooms, only: [:create, :destroy]
     resources :relationships, only: [:followed, :follower]
     resources :relationships, only: [:followed, :follower, :create, :destroy]
     get "dms/room/information" => "dms#show"

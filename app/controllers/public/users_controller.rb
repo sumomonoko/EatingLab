@@ -8,23 +8,11 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @foods = @user.foods.page(params[:page]).per(15).order(created_at: :desc)
     # DM機能
-    @current_member = Dm.where(user_id: current_user.id)
-    @another_member = Dm.where(user_id: @user.id)
-    unless @user.id == current_user.id
-      @current_member.each do |current|
-        @another_member.each do |another|
-          if current.room_id == another.room_id
-            @is_room = true
-            @room_id = current.room_id
-          end
-        end
-      end
-      unless @is_room
-        @room = Room.new
-        @dm = Dm.new
-      end
+    room = current_user.room_with(@user)
+    if room
+      @is_room = true
+      @room_id = room.id
     end
-    #byebug
   end
 
   def edit

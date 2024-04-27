@@ -65,4 +65,9 @@ class User < ApplicationRecord
     end
   end
 
+  # DM機能
+  def room_with(user)
+    Room.find_by(leader_id: user.id, member_id: id) || Room.find_by(leader_id: id, member_id: user.id)
+  end
+
 end

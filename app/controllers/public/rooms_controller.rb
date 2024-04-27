@@ -2,10 +2,9 @@ class Public::RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @room = Room.create
-    @current_member = @room.entries.create(user_id: current_user.id)
-    @another_member = @room.entries.create(user_id: params[:dm][:user_id])
-    redirect_to room_path(@room)
+    user = User.find(params[:user_id])
+    room = Room.create(leader_id: current_user.id, member_id: user.id)
+    redirect_to user_room_path(room, user) 
   end
 
   def index
@@ -18,13 +17,5 @@ class Public::RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    if @room.dms.where(user_id: current_user.id).present?
-      @messages = @room.messages.all
-      @message = Message.new
-      @dms = @room.dms
-      @another_member = @dms.where.not(user_id: current_user.id).first
-    else
-      redirect_back(fallback_location: root_path)
-    end
   end
 end
