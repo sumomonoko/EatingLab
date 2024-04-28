@@ -3,7 +3,7 @@ class Room < ApplicationRecord
   belongs_to :leader, class_name: "User"
   belongs_to :member, class_name: "User"
   has_many :dms, dependent: :destroy
-  has_many :users, dependent: :destroy
+  #has_many :users, dependent: :destroy
 
   # DM機能
   def dm_partner(current_user)

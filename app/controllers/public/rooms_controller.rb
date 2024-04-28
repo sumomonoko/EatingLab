@@ -4,7 +4,7 @@ class Public::RoomsController < ApplicationController
   def create
     user = User.find(params[:user_id])
     room = Room.create(leader_id: current_user.id, member_id: user.id)
-    redirect_to user_room_path(user, room)
+    redirect_to user_room_path(current_user, room)
   end
 
   def show
@@ -14,6 +14,6 @@ class Public::RoomsController < ApplicationController
   end
 
   def index
-    @rooms = Room.all
+    @rooms = Room.where("member_id=#{params[:user_id]} or leader_id=#{params[:user_id]}")
   end
 end
