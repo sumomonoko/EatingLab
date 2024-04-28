@@ -10,7 +10,7 @@ Rails.application.routes.draw do
         get :check
       end
       # DM機能
-      resources :rooms, only: [:create, :destroy, :show, :index] do
+      resources :rooms, only: [:create, :show, :index] do
         resources :dms, only: [:create, :destroy]
       end
       collection do

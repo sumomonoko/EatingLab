@@ -7,10 +7,17 @@ class Public::DmsController < ApplicationController
     redirect_to user_room_path(room.dm_partner(current_user), room)
   end
 
+  def destroy
+    dm = Dm.find(params[:id])
+    room = dm.room
+    dm.destroy
+    redirect_to user_room_path(room.dm_partner(current_user), room)
+  end
+
   private
 
   def dm_params
     params.permit(:message, :room_id, :user_id)
-    
+
   end
 end

@@ -6,7 +6,7 @@
 <div class="" style="width: 40%; margin: 0 auto;">
   <div class="row">
     <div class="col">
-      <h4 class="float-left font-weight-bold px-3 my-3">
+      <h4 class="float-left font-weight-bold px-3 my-3 rounded-pill">
         <%= @room.dm_partner(current_user).name %> さんとのメッセージ
       </h4>
     </div>
@@ -19,11 +19,11 @@
             <td class="col-md-12 text-left row">
               <%= image_tag dm.room.dm_partner(current_user).image, class: "round-img"%>
               <div><%= dm.message %></div>
-
             </td>
           <% else %>
             <td class="col-md-12 text-right">
               <%= dm.message %>
+              <%= link_to "削除", user_room_dm_path(room_id: dm.room_id, id: dm), method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: 'btn btn-sm btn-danger' %>
             </td>
           <% end %>
         </tr>
@@ -33,7 +33,7 @@
   <%= form_with url: user_room_dms_path(current_user.id, @room.id), method: :post, local: false do |f| %>
     <div style="display: flex;">
       <%= f.text_area :message, rows:'5', placeholder: "メッセージを入力", style: "width: 93%; height: 50px;"%>
-      <%= button_tag type: "submit", style: "width: 7%;  border: 1px solid #FFDEAD; background-color: #FFDEAD;"  do %>
+      <%= button_tag type: "submit", style: "width: 7%;  border: 1px solid #FFA07A; background-color: #FFA07A;"  do %>
        <i style="color: white;"class="fa-regular fa-paper-plane"></i>
       <% end %>
     </div>
