@@ -99,11 +99,3 @@ User.find_or_create_by!(email: 'sara@gmail') do |user|
    user.introduction = "韓国料理が好きです。よろしくお願いします！";
    user.is_active = true
 end
-
-# Food.find_or_create_by!(title: "和食") do |food|
-#    food.genre_id = 3;
-#    food.menu = "とんかつメイン！サラダ、麦ご飯、味噌汁、漬物。";
-#    food.point = "麦ご飯にしてアレンジ！！";
-#    food.user_id = 1;
-#    food.created_at = DateTime.parse("2024年04月24日")
-# end
