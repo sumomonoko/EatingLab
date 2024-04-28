@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 side-view">
       <% if current_user == @user %>
         <h4>マイページ</h4>
       <% else %>
@@ -10,6 +10,9 @@
       <%= image_tag @user.get_image(150,150), class: 'rounded-circle' %>
       <div id="user_introduction">
         <%= render 'public/users/self_introduction', user: @user %>
+      </div>
+      <div>
+        <%= render "public/dms/dmbtn", user: @user, is_room: @is_room, room_id: @room_id %>
       </div>
     </div>
     <div class="col-md-8 offset-md-1">

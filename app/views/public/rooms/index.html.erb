@@ -1,0 +1,21 @@
+<div class="" style="width: 40%; margin: 0 auto;">
+  <div class="row">
+    <div class="col">
+      <h4 class="float-left font-weight-bold px-3 my-3">DM一覧</h4>
+    </div>
+  </div>
+  <div class="row">
+    <% @rooms.each do |room| %>
+      <%= link_to user_room_path(room.dm_partner(current_user), room) do %>
+        <table class="table table-borderless border">
+          <tr class="col-md-12">
+            <td class="col-md-12">
+              <%= image_tag room.dm_partner(current_user).image %>
+              <%= room.dm_partner(current_user).name %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    <% end %>
+  </div>
+</div>

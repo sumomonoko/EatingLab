@@ -14,24 +14,6 @@
       <th>フォロワー</th>
       <td><%= link_to user.followers.count, user_followers_path(user) %></td>
     </tr>
-    <tr>
-      <td>
-        <% if current_user == user %>
-          <%= link_to "DM一覧", dms_path, class: 'btn btn-success mx-auto rounded px-4 my-4' %>
-        <% else %>
-          <% unless user.id == current_user.id %>
-            <% if @is_room == true %>
-              <%= link_to "DM", room_path(@room_id) %>
-            <% else %>
-              <% form_for @room do |f| %>
-                <% fields_for @entry do |e| %>
-                  <% e.number_field :user_id, value: @user.id, hidden: true %>
-                <% end %>
-              <% end %>
-            <% end %>
-        <% end %>
-      </td>
-    </tr>
   </table>
 </div>
 
@@ -40,6 +22,7 @@
     <%= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
     <i class="fa-solid fa-user-gear"></i>
     <% end %>
+    <%= link_to "DM一覧", user_rooms_path(user), class: 'btn btn-outline-warning btn-block' %>
   <% else %>
     <td id="relationship_btn_<%= user.id %>">
       <%= render "public/relationships/followbtn", user: user, options: { class: ""} %>

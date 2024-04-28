@@ -1,7 +1,12 @@
+<style>
+  h4{
+    background: #FFDEAD;
+  }
+</style>
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4 class="float-left font-weight-bold bg-light px-3 my-3"><%= @user.name %>さんの会員詳細</h4>
+      <h4 class="float-left font-weight-bold px-3 my-3"><%= @user.name %>さんの会員詳細</h4>
     </div>
   </div>
   <div class="row">
@@ -40,5 +45,5 @@
       </div>
     </div>
   </div>
-  <%= link_to "戻る", admin_users_path, class: 'btn btn-secondary mt-5' %>
+  <%= link_to "会員一覧に戻る", admin_users_path, class: 'btn btn-secondary mt-5' %>
 </div>

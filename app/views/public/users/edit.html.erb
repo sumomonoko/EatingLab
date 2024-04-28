@@ -1,3 +1,8 @@
+<style>
+  h3{
+    background: #FFDEAD;
+  }
+</style>
 <div class="container px-5 px-sm-0">
   <div id="error_explanation">
     <%= render 'layouts/error_messages', obj: @user %>
@@ -7,7 +12,7 @@
 <div class="container">
   <div class = "row" >
     <div class = "col" >
-      <h3 class="float-left font-weight-bold bg-light px-3 my-3">会員情報編集</h3>
+      <h3 class="float-left font-weight-bold px-3 my-3">会員情報編集</h3>
       <div class="float-right">
         <%= link_to "退会する", check_user_path(@user), class: "btn btn-danger mx-auto rounded px-4 my-4" %>
       </div>
@@ -15,7 +20,7 @@
   </div>
   <div class = "row">
     <div class = "offset-2 float-center col-6">
-      <%= form_with model: @user, url: user_path, method: :patch do |f| %>
+      <%= form_with model: @user do |f| %>
         <table class="table table-borderless">
           <tr>
             <th>my画像</th>
@@ -40,5 +45,5 @@
       <% end %>
     </div>
   </div>
-  <%= link_to "戻る", user_path(@user), class: 'btn btn-secondary mt-5' %>
+  <%= link_to "マイページに戻る", user_path(@user), class: 'btn btn-secondary mt-5' %>
 </div>

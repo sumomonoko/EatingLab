@@ -57,18 +57,17 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   # 検索方法分岐
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @user = User.where("name LIKE?", "#{word}")
-    elsif search == "forward_match"
-      @user = User.where("name LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @user = User.where("name LIKE?","%#{word}")
-    elsif search == "partial_match"
+  def self.looks(word)
+    if word.present?
       @user = User.where("name LIKE?","%#{word}%")
     else
       @user = User.all
     end
+  end
+
+  # DM機能
+  def room_with(user)
+    Room.find_by(leader_id: user.id, member_id: id) || Room.find_by(leader_id: id, member_id: user.id)
   end
 
 end

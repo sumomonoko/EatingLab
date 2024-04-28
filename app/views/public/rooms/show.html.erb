@@ -1,0 +1,45 @@
+<style>
+  h4{
+    background: #FFDEAD;
+  }
+  table{
+    background: #FFFAF0;
+  }
+</style>
+<div class="" style="width: 40%; margin: 0 auto;">
+  <div class="row">
+    <div class="col">
+      <h4 class="float-left font-weight-bold px-3 my-3">
+        <%= @room.dm_partner(current_user).name %> さんとのメッセージ
+      </h4>
+    </div>
+  </div>
+  <div class="scrollable-table">
+    <table class="table table-borderless border">
+      <% @dms.each do |dm| %>
+        <tr class="col-md-12">
+          <% if dm.user_id != current_user.id %>
+            <td class="col-md-12 text-left row">
+              <%= image_tag dm.room.dm_partner(current_user).image, class: "round-img"%>
+              <div><%= dm.message %></div>
+
+            </td>
+          <% else %>
+            <td class="col-md-12 text-right">
+              <%= dm.message %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <%= form_with url: user_room_dms_path(current_user.id, @room.id), method: :post, local: false do |f| %>
+    <div style="display: flex;">
+      <%= f.text_area :message, rows:'5', placeholder: "メッセージを入力", style: "width: 93%; height: 50px;"%>
+      <%= button_tag type: "submit", style: "width: 7%;  border: 1px solid #FFDEAD; background-color: #FFDEAD;"  do %>
+       <i style="color: white;"class="fa-regular fa-paper-plane"></i>
+
+      <% end %>
+    </div>
+  <% end %>
+</div>

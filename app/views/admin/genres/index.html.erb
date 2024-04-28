@@ -1,3 +1,11 @@
+<style>
+  h3{
+    background: #FFDEAD;
+  }
+  thead{
+    background: #FFFAF0;
+  }
+</style>
 <div class="container px-5 px-sm-0">
   <div id="error_explanation">
     <%= render 'layouts/error_messages', obj: @genre %>
@@ -7,13 +15,12 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h5 class="float-left font-weight-bold bg-light px-3 my-3">ジャンル一覧・追加</h5>
+      <h3 class="float-left font-weight-bold px-3 my-3">ジャンル一覧・追加</h3>
     </div>
   </div>
   <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
   <div class="row form-group my-5">
-    <label for="inputName" class="col-2 col-form-label ">ジャンル名</label>
-    <div class="col-3">
+    <div class="col-4 offset-1">
       <%= f.text_field :name, class: "form-control ", id: "inputName", placeholder: "ジャンル名" %>
     </div>
     <div class="col-2">

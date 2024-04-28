@@ -61,7 +61,7 @@ end
 User.find_or_create_by!(email: 'momo@gmail') do |user|
    user.name = "momo";
    user.password = "123221";
-   user.introduction = "健康を意識した食生活をしています。";
+   user.introduction = "健康を意識した食生活を目指しています。";
    user.is_active = true
 end
 
@@ -86,3 +86,24 @@ User.find_or_create_by!(email: 'mami@gmail') do |user|
    user.is_active = true
 end
 
+User.find_or_create_by!(email: 'yamato@gmail') do |user|
+   user.name = "yamato";
+   user.password = "133124";
+   user.introduction = "よろしくです。";
+   user.is_active = true
+end
+
+User.find_or_create_by!(email: 'sara@gmail') do |user|
+   user.name = "沙羅";
+   user.password = "768543";
+   user.introduction = "韓国料理が好きです。よろしくお願いします！";
+   user.is_active = true
+end
+
+# Food.find_or_create_by!(title: "和食") do |food|
+#    food.genre_id = 3;
+#    food.menu = "とんかつメイン！サラダ、麦ご飯、味噌汁、漬物。";
+#    food.point = "麦ご飯にしてアレンジ！！";
+#    food.user_id = 1;
+#    food.created_at = DateTime.parse("2024年04月24日")
+# end
