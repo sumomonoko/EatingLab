@@ -60,7 +60,8 @@ class Public::UsersController < ApplicationController
   def authorize_user
     user = User.find(params[:id])
     unless current_user == user
-      redirect_to foods_path, alert: '他のユーザーの情報を編集することはできません。'
+      flash[:notice] = '他のユーザーの情報を編集することはできません。'
+      redirect_to foods_path
     end
   end
 

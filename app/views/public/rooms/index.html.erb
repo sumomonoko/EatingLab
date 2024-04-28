@@ -1,3 +1,8 @@
+<style>
+  h4{
+    background: #FFDEAD;
+  }
+</style>
 <div class="" style="width: 40%; margin: 0 auto;">
   <div class="row">
     <div class="col">
@@ -6,16 +11,16 @@
   </div>
   <div class="row">
     <% @rooms.each do |room| %>
-      <%= link_to user_room_path(room.dm_partner(current_user), room) do %>
-        <table class="table table-borderless border">
-          <tr class="col-md-12">
-            <td class="col-md-12">
-              <%= image_tag room.dm_partner(current_user).image %>
+      <table class="table table-borderless border">
+        <tr>
+          <td class="col-md-12">
+            <%= link_to user_room_path(room.dm_partner(current_user), room) do %>
+              <%= image_tag room.dm_partner(current_user).get_image(60, 60), class: 'rounded-circle' %>
               <%= room.dm_partner(current_user).name %>
-            </td>
-          </tr>
-        </table>
-      <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
     <% end %>
   </div>
 </div>
