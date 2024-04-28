@@ -4,7 +4,7 @@
       <% if is_room %>
         <%= link_to "DMをする", user_room_path(user.id, room_id), class: 'btn btn-outline-warning btn-block' %>
       <% else %>
-        <%= link_to "DMを開始する",  user_rooms_path(user.id), method: :post, class: 'btn btn-outline-warning btn-block' %>
+        <%= link_to "DMを開始する",  user_rooms_path(user.id, room_id), method: :post, class: 'btn btn-outline-warning btn-block' %>
       <% end %>
     <% end %>
   </div>

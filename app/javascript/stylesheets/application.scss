@@ -63,3 +63,16 @@
 	transform: translateY(100px);
   }
 }
+
+ .scrollable-table {
+    width: 100%; /* 必要に応じて調整 */
+    height: 400px; /* 表示したい高さに設定 */
+    overflow-y: auto; /* 縦方向にスクロールバーを表示 */
+    border: 1px solid #ccc;
+  }
+
+  .round-img{
+  	border-radius: 50%;
+    width: 30px;
+    margin: 0 10px;
+  }
