@@ -2,6 +2,9 @@
   h4{
     background: #FFDEAD;
   }
+  table{
+    background: #FFFAF0;
+  }
 </style>
 <div class="" style="width: 40%; margin: 0 auto;">
   <div class="row">
@@ -33,7 +36,10 @@
   <%= form_with url: user_room_dms_path(current_user.id, @room.id), method: :post, local: false do |f| %>
     <div style="display: flex;">
       <%= f.text_area :message, rows:'5', placeholder: "メッセージを入力", style: "width: 93%; height: 50px;"%>
-      <%= f.submit "<i class='fa-regular fa-paper-plane'></i>" .html_safe %>
+      <%= button_tag type: "submit", style: "width: 7%;  border: 1px solid #FFDEAD; background-color: #FFDEAD;"  do %>
+       <i style="color: white;"class="fa-regular fa-paper-plane"></i>
+
+      <% end %>
     </div>
   <% end %>
 </div>

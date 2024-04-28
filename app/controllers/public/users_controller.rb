@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update, :withdrow]
-  before_action :authorize_user, only: [:update]
+  before_action :authorize_user, only: [:update, :edit ]
   before_action :guest_user, only: [:edit, :show]
 
   def show
