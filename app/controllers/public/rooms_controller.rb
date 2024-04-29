@@ -11,9 +11,11 @@ class Public::RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @dms = @room.dms.includes(:user)
     @dm = Dm.new
+    @user = current_user
   end
 
   def index
     @rooms = Room.where("member_id=#{params[:user_id]} or leader_id=#{params[:user_id]}")
+    @user = current_user
   end
 end
