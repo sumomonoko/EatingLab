@@ -9,11 +9,15 @@ ja:
         email: Eメール
         password: パスワード
         introduction: 自己紹介文
-      book:
+      food:
         title: テーマ
         menu: 献立
         genre: ジャンル
         point: アピールポイント
+        genre_id: ジャンル
+      genre:
+        name: ジャンル名
+
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
