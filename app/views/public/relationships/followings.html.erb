@@ -6,7 +6,13 @@
 <div class="container">
   <div class = "row" >
     <div class = "col" >
-      <h3 class="float-left font-weight-bold px-3 my-3 rounded-pill">フォロー中</h3>
+      <div class="float-left font-weight-bold px-3 my-3 rounded-pill">
+        <% if current_user == @user %>
+          <h3>myフォロー一覧</h3>
+        <% else %>
+          <h3><%= @user.name %>さんのフォロー一覧</h3>
+        <% end %>
+      </div>
       </div>
   </div>
   <div class="row">
