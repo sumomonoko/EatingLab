@@ -33,11 +33,11 @@
             </tr>
             <tr>
               <th>献立</th>
-              <td><%= food.menu %></td>
+              <td><%= simple_format(food.menu, sanitize: true) %></td>
             </tr>
             <tr>
               <th>アピールポイント</th>
-              <td><%= food.point %></td>
+              <td><%= simple_format(food.point, sanitize: true) %></td>
             </tr>
             <tr>
               <th>投稿日</th>
